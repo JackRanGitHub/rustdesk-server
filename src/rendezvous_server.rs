@@ -382,7 +382,7 @@ impl RendezvousServer {
                     if req_pk.1.elapsed().as_secs() > 6 {
                         req_pk.0 = 0;
                     } else if req_pk.0 > 2 {
-                        return send_rk_res(socket, addr, TOO_FREQUENT).await;
+                        //return send_rk_res(socket, addr, TOO_FREQUENT).await;
                     }
                     req_pk.0 += 1;
                     req_pk.1 = Instant::now();
@@ -870,7 +870,7 @@ impl RendezvousServer {
             if counter.1.elapsed().as_secs() > IP_BLOCK_DUR {
                 counter.0 = 0;
             } else if counter.0 > 30 {
-                return false;
+                //return false;
             }
             counter.0 += 1;
             counter.1 = now;
@@ -880,7 +880,7 @@ impl RendezvousServer {
             if counter.1.elapsed().as_secs() > DAY_SECONDS {
                 counter.0.clear();
             } else if counter.0.len() > 300 {
-                return !is_new;
+                //return !is_new;
             }
             if is_new {
                 counter.0.insert(id.to_owned());
